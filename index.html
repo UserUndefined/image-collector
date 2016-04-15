@@ -23,9 +23,54 @@
         <div class="row">
             <div class="col s12">
                 <div class="input-field col s6">
+                    <span>Camera:</span>
                     <input id="image_filepath" type="file" class="validate" accept="image/*" capture="camera">
                     <!--label for="image_filepath">Image Filepath</label-->
                     <!--input type="file" accept="image/*" capture="camera"-->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s6">
+                    <span>Microphone #1:</span>
+                    <input type="file" accept="audio/*;capture=microphone">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s6">
+                    <span>Microphone #2:</span>
+                    <input id="audio_filepath" type="file" class="validate" accept="audio/*" capture="microphone">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s6">
+                    <span>Video:</span>
+                    <input id="video_filepath" type="file" class="validate" accept="audio/*" capture="video">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s6">
+                    <span>Webkit Speech:</span>
+                    <input type="text" x-webkit-speech>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <div class="speech">
+                        <span>
+                            <input type="text" name="q" id="transcript" placeholder="Speak" />
+                            <button class="waves-effect waves-light btn" onclick="startDictation()">Start Recording</button>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,4 +78,31 @@
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.min.js"></script>
+<script>
+    function startDictation() {
+
+        if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+            var recognition = new webkitSpeechRecognition();
+
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.lang = "en-US";
+            recognition.start();
+
+            recognition.onresult = function(e) {
+                document.getElementById('transcript').value
+                        = e.results[0][0].transcript;
+                recognition.stop();
+                //document.getElementById('labnol').submit();
+            };
+
+            recognition.onerror = function(e) {
+                recognition.stop();
+            }
+
+        }
+    }
+</script>
 </html>
