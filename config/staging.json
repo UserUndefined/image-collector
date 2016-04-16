@@ -1,5 +1,5 @@
 {
     "server": {
-        "testUrl": "https://generic-receiver-api.herokuapp.com/"
+        "receiptUrl": "https://generic-receiver-api.herokuapp.com/"
     }
 }

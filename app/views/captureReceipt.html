@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s6">
+                <button class="waves-effect waves-light btn">Copy Receipt</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s6">
+                <button class="waves-effect waves-light btn">Load Receipt</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s6">
+                <button class="waves-effect waves-light btn" onclick="startDictation()">Add Notes</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s6">
+                <input type="text" id="transcript" ng-model="transcript">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s6">
+                <button class="waves-effect waves-light btn" ng-click="submitReceipt()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

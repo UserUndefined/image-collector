@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .factory('ExampleApi', ['Restangular', 'TEST_API_URL', function (Restangular, url) {
+    .factory('ReceiptApi', ['Restangular', 'RECEIPT_API_URL', function (Restangular, url) {
         return Restangular.withConfig(function (RestangularConfigurer) {
             RestangularConfigurer.setBaseUrl(url);
             RestangularConfigurer.addRequestInterceptor(function (element, operation, what) {

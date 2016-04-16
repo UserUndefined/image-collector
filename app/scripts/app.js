@@ -12,15 +12,19 @@ angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular'])
         function ($stateProvider, $urlRouterProvider) {
 
             var mainView = {
-                    url: '/',
+                    url: '/main',
                     templateUrl: 'views/main.html',
                     controller: 'MainController'
                     },
+                captureReceiptView = {
+                    url: '/',
+                    templateUrl: 'views/captureReceipt.html',
+                    controller: 'CaptureReceiptController'
+                },
                 directivesExamplesView = {
                     url: '/directives',
                     templateUrl: 'views/directiveExamples.html',
                     controller: 'directiveExamplesController'
-
                 },
                 formValidationExampleView = {
                     url: '/forms',
@@ -31,6 +35,7 @@ angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular'])
             $stateProvider
 
             .state('main', mainView)
+            .state('captureReceipt', captureReceiptView)
             .state('directivesExamples', directivesExamplesView)
             .state('formValidationExample', formValidationExampleView);
 

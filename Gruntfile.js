@@ -29,7 +29,7 @@ module.exports = function (grunt) {
                 downloads: 'downloads',
                 components: 'bower_components',
                 environment: environment,
-                fonts: 'font'
+                fonts: 'fonts'
             },
             connect: {
                 options: {
@@ -117,22 +117,22 @@ module.exports = function (grunt) {
                 },
                 development: {
                     constants: {
-                        TEST_API_URL: config("development").server.testUrl
+                        RECEIPT_API_URL: config("development").server.receiptUrl
                     }
                 },
                 qa: {
                     constants: {
-                        TEST_API_URL: config("qa").server.testUrl
+                        RECEIPT_API_URL: config("qa").server.receiptUrl
                     }
                 },
                 staging: {
                     constants: {
-                        TEST_API_URL: config("staging").server.testUrl
+                        RECEIPT_API_URL: config("staging").server.receiptUrl
                     }
                 },
                 production: {
                     constants: {
-                        TEST_API_URL: config("production").server.testUrl
+                        RECEIPT_API_URL: config("production").server.receiptUrl
                     }
                 }
             },
@@ -209,7 +209,7 @@ module.exports = function (grunt) {
                     dest: '<%= config.dist %>/<%= config.images %>/',
                     src: ['**']
                 },
-                font: {
+                fonts: {
                     expand: true,
                     cwd: '<%= config.app %>/<%= config.fonts %>/',
                     dest: '<%= config.dist %>/<%= config.fonts %>/',
@@ -434,7 +434,7 @@ module.exports = function (grunt) {
             'copy:styles',
             'copy:html',
             'copy:images',
-            'copy:font',
+            'copy:fonts',
             'cssmin',
             'rev',
             'usemin',
