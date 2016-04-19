@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .controller('CaptureReceiptController', ['$scope', 'ReceiptApi', function ($scope, ReceiptApi) {
+    .controller('CaptureReceiptController', ['$scope', 'ReceiptApi', 'transcriptParser', function ($scope, ReceiptApi, transcriptParser) {
 
         function initialise(){
             $scope.transcript = '';
@@ -43,6 +43,8 @@ angular.module('app')
                     document.getElementById('transcript').value
                         = e.results[0][0].transcript;
                     $scope.transcript = e.results[0][0].transcript;
+                    $scope.project = transcriptParser.parseProject(e.results[0][0].transcript);
+                    $scope.$apply();
                     recognition.stop();
                     //document.getElementById('labnol').submit();
                 };
