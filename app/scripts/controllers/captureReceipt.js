@@ -6,15 +6,16 @@ angular.module('app')
         function initialise(){
             $scope.transcript = '';
             $scope.receiptFile = '';
-            //$scope.receiptFile.src = '';
+            $scope.createdDate = '';
+            $scope.project = '';
+            $scope.claimValue = '';
             $scope.receiptSubmitted = false;
+            $scope.receiptInvalid = true;
         }
 
         $scope.submitReceipt = function(){
             console.info($scope.transcript);
             console.info($scope.receiptFile);
-            //console.info(document.getElementById('receiptFile').files[0]);
-            //payload.receiptFile = document.getElementById('receiptFile').files[0];;
             var payload = {};
             payload.transcript = $scope.transcript;
             payload.receiptFile = $scope.receiptFile;
@@ -55,12 +56,11 @@ angular.module('app')
 
         $scope.receiptFileChangeEventHandler = function(files){
             console.log('event handles');
-            //$scope.receiptFile = files[0];
             var file = files[0];
             var reader = new FileReader();
             reader.onload = function(event) {
-                //console.log(event.target.result);
                 $scope.receiptFile = event.target.result;
+                $scope.receiptInvalid = false;
                 $scope.$apply();
             };
             reader.readAsDataURL(file);

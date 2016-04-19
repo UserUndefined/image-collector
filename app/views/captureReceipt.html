@@ -16,21 +16,43 @@
     <div class="row">
         <div class="col s12">
             <div class="input-field col s8">
-                <button class="waves-effect waves-light btn" ng-click="startDictation()">Add Notes</button>
+                <button class="waves-effect waves-light btn" ng-click="startDictation()">Dictate Notes</button>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col s12">
-            <div class="input-field col s8">
-                <input type="text" id="transcript" ng-model="transcript" ng-change="receiptFileChangeEventHandler()">
+            <div class="input-field col s12">
+                <input type="text" id="transcript" ng-model="transcript" ng-change="receiptFileChangeEventHandler()" placeholder="Notes">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s12">
+                <input type="text" ng-model="createdDate" placeholder="Date">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s12">
+                <input type="text" ng-model="project" placeholder="Project">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s12">
+                <input type="text" ng-model="claimValue" placeholder="Value">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col s12">
             <div class="input-field col s6">
-                <button class="waves-effect waves-light btn" ng-click="submitReceipt()">Submit</button>
+                <button class="waves-effect waves-light btn" ng-click="submitReceipt()" ng-if="!receiptInvalid" >Save Receipt</button>
+                <button class="disabled btn" ng-click="submitReceipt()" ng-if="receiptInvalid" >Save Receipt</button>
             </div>
         </div>
     </div>
