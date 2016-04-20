@@ -52,7 +52,13 @@ angular.module('app')
                 recognition.onerror = function(e) {
                     recognition.stop();
                 }
+                recognition.onstart = function(event){
+                    //console.log('Dictation started');
+                }
 
+                recognition.onend = function(){
+                    //console.log('Dictation ended');
+                }
             }
         };
 

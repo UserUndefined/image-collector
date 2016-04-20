@@ -23,28 +23,28 @@
     <div class="row">
         <div class="col s12">
             <div class="input-field col s12">
-                <input type="text" id="transcript" ng-model="transcript" ng-change="receiptFileChangeEventHandler()" placeholder="Notes">
+                <textarea class="materialize-textarea validate" type="text" id="transcript" ng-model="transcript"></textarea>
+                <label class="active" for="transcript">Notes</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="input-field col s6">
+                <input id="receiptDate" type="text" class="validate" ng-model="createdDate">
+                <label class="active" for="receiptDate">Receipt Date</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="receiptValue" type="text" class="validate" ng-model="claimValue">
+                <label class="active" for="receiptValue">Claim Value</label>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col s12">
             <div class="input-field col s12">
-                <input type="text" ng-model="createdDate" placeholder="Date">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <div class="input-field col s12">
-                <input type="text" ng-model="project" placeholder="Project">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <div class="input-field col s12">
-                <input type="text" ng-model="claimValue" placeholder="Value">
+                <input class="validate" id="projectName" type="text" ng-model="project">
+                <label class="active" for="projectName">Project</label>
             </div>
         </div>
     </div>

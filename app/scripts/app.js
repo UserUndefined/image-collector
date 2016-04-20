@@ -45,6 +45,6 @@ angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular'])
 
 angular.element(document).ready(function () {
     angular.bootstrap(document, ['app']);
-    //$(".button-collapse").sideNav();
-    //$('select').material_select();
+    $(".button-collapse").sideNav();
+    $('select').material_select();
 });
