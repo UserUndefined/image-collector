@@ -14,6 +14,7 @@ angular.module('app')
             var payload = {};
             payload.project = $scope.receipt.project;
             payload.price = $scope.receipt.price;
+            payload.date = $scope.receipt.date;
             payload.transcript = $scope.receipt.transcript;
             payload.file = $scope.receipt.file;
             ReceiptApi.all('receiver').post(payload).then(function(){
