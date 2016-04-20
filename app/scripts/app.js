@@ -1,4 +1,4 @@
-angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular', 'angularSpinner'])
+angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular', 'angularSpinner', 'cgNotify'])
 
     .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;

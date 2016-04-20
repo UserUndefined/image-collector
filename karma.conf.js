@@ -20,6 +20,9 @@ module.exports = function(config) {
         'app/bower_components/Materialize/bin/materialize.js',
         'app/bower_components/lodash/lodash.js',
         'app/bower_components/restangular/dist/restangular.js',
+        'app/bower_components/spin.js/spin.js',
+        'app/bower_components/angular-spinner/angular-spinner.js',
+        'app/bower_components/angular-notify/dist/angular-notify.js',
         'app/scripts/main.js',
         'test/**/*.js'
     ],

@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <div class="">
-            <img class="receiptPreview col s12" ng-src="{{receipt.file}}"/>
+            <img id="image-test" class="receiptPreview col s12" ng-src="{{receipt.file}}" onload="Materialize.fadeInImage('#image-test')"/>
         </div>
     </div>
 </div>

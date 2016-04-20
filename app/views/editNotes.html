@@ -15,7 +15,7 @@
             <label class="active" for="receiptDate">Receipt Date</label>
         </div>
         <div class="input-field col s6">
-            <input id="receiptValue" type="text" class="validate" ng-model="receipt.claimValue">
+            <input id="receiptValue" type="text" class="validate" ng-model="receipt.price">
             <label class="active" for="receiptValue">Claim Value</label>
         </div>
     </div>
@@ -33,8 +33,8 @@
     </div>
     <div ng-if="receiptSubmitted" class="row">
         <div class="input-field col s12">
-            <p>Receipt Submitted</p>
+            <a ng-click="navigateToNewReceipt()">New receipt</a>
         </div>
     </div>
-    <span us-spinner="{radius:30, width:8, length:16}" spinner-on="showSpinner"></span>
+    <span us-spinner="{radius:20, width:8, length:16}" spinner-on="showSpinner"></span>
 </div>

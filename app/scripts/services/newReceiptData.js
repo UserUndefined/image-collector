@@ -6,13 +6,17 @@ angular.module('app')
         var _receipt = {
             file: '',
             transcript: '',
-            project: ''
+            project: '',
+            price: '',
+            date: ''
         };
 
         function resetReceipt(){
             _receipt.file = '';
             _receipt.transcript = '';
             _receipt.project = '';
+            _receipt.price = '';
+            _receipt.date = '';
         }
 
         return {

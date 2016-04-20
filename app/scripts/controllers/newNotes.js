@@ -22,6 +22,7 @@ angular.module('app')
                 recognition.onresult = function(e) {
                     $scope.receipt.transcript = e.results[0][0].transcript;
                     $scope.receipt.project = transcriptParser.parseProject(e.results[0][0].transcript);
+x                    $scope.receipt.price = transcriptParser.parsePrice(e.results[0][0].transcript);
                     $scope.$apply();
                     recognition.stop();
                     $state.go('editNotes');
