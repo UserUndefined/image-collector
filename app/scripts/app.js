@@ -17,9 +17,24 @@ angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular'])
                     controller: 'MainController'
                     },
                 captureReceiptView = {
-                    url: '/',
+                    url: '/capture',
                     templateUrl: 'views/captureReceipt.html',
                     controller: 'CaptureReceiptController'
+                },
+                newReceiptView = {
+                    url: '/new',
+                    templateUrl: 'views/newReceipt.html',
+                    controller: 'NewReceiptController'
+                },
+                newNotesView = {
+                    url: '/new',
+                    templateUrl: 'views/newNotes.html',
+                    controller: 'NewNotesController'
+                },
+                editNotesView = {
+                    url: '/new',
+                    templateUrl: 'views/editNotes.html',
+                    controller: 'EditNotesController'
                 },
                 directivesExamplesView = {
                     url: '/directives',
@@ -36,10 +51,13 @@ angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular'])
 
             .state('main', mainView)
             .state('captureReceipt', captureReceiptView)
+            .state('newReceipt', newReceiptView)
+            .state('newNotes', newNotesView)
+            .state('editNotes', editNotesView)
             .state('directivesExamples', directivesExamplesView)
             .state('formValidationExample', formValidationExampleView);
 
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/new');
 
         }]);
 
