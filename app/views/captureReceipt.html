@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row"></div>
     <div class="row">
-        <div class="col s12">
-            <div class="input-field col s6">
-                <!--input type="file" accept="image/*" capture="camera" id="receiptFile" fileread="receiptFile.src" onchange="angular.element(this).scope().receiptFileChangeEventHandler(this.files)"-->
+        <div class="file-field input-field col s12">
+            <div class="waves-effect waves-light btn">
+                <span>Capture Receipt</span>
                 <input type="file" accept="image/*" capture="camera" id="receiptFile" onchange="angular.element(this).scope().receiptFileChangeEventHandler(this.files)">
             </div>
         </div>
@@ -14,46 +14,36 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s12">
-            <div class="input-field col s8">
-                <button class="waves-effect waves-light btn" ng-click="startDictation()">Dictate Notes</button>
-            </div>
+        <div class="input-field col s12">
+            <button class="waves-effect waves-light btn" ng-click="startDictation()">Dictate Notes</button>
         </div>
     </div>
     <div class="row">
-        <div class="col s12">
-            <div class="input-field col s12">
-                <textarea class="materialize-textarea validate" type="text" id="transcript" ng-model="transcript"></textarea>
-                <label class="active" for="transcript">Notes</label>
-            </div>
+        <div class="input-field col s12">
+            <textarea class="materialize-textarea validate" type="text" id="transcript" ng-model="transcript"></textarea>
+            <label class="active" for="transcript">Notes</label>
         </div>
     </div>
     <div class="row">
-        <div class="col s12">
-            <div class="input-field col s6">
-                <input id="receiptDate" type="text" class="validate" ng-model="createdDate">
-                <label class="active" for="receiptDate">Receipt Date</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="receiptValue" type="text" class="validate" ng-model="claimValue">
-                <label class="active" for="receiptValue">Claim Value</label>
-            </div>
+        <div class="input-field col s6">
+            <input id="receiptDate" type="text" class="validate" ng-model="createdDate">
+            <label class="active" for="receiptDate">Receipt Date</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="receiptValue" type="text" class="validate" ng-model="claimValue">
+            <label class="active" for="receiptValue">Claim Value</label>
         </div>
     </div>
     <div class="row">
-        <div class="col s12">
-            <div class="input-field col s12">
-                <input class="validate" id="projectName" type="text" ng-model="project">
-                <label class="active" for="projectName">Project</label>
-            </div>
+        <div class="input-field col s12">
+            <input class="validate" id="projectName" type="text" ng-model="project">
+            <label class="active" for="projectName">Project</label>
         </div>
     </div>
     <div class="row">
-        <div class="col s12">
-            <div class="input-field col s6">
-                <button class="waves-effect waves-light btn" ng-click="submitReceipt()" ng-if="!receiptInvalid" >Save Receipt</button>
-                <button class="disabled btn" ng-click="submitReceipt()" ng-if="receiptInvalid" >Save Receipt</button>
-            </div>
+        <div class="input-field col s6">
+            <button class="waves-effect waves-light btn" ng-click="submitReceipt()" ng-if="!receiptInvalid" >Save Receipt</button>
+            <button class="disabled btn" ng-click="submitReceipt()" ng-if="receiptInvalid" >Save Receipt</button>
         </div>
     </div>
     <div ng-if="receiptSubmitted" class="row">
