@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .controller('NewNotesController', ['$scope', '$state', 'transcriptParser', 'newReceiptDataService', function ($scope, $state, transcriptParser, newReceiptDataService) {
+    .controller('NewNotesController', ['$scope', '$state', 'newReceiptDataService', function ($scope, $state, newReceiptDataService) {
 
         var recognition = undefined;
 
@@ -63,8 +63,6 @@ angular.module('app')
 
         function completeRecording(transcript){
             $scope.receipt.transcript = transcript;
-            $scope.receipt.project = transcriptParser.parseProject(transcript);
-            $scope.receipt.price = transcriptParser.parsePrice(transcript);
             $scope.receipt.date = moment().format("DD MMM YYYY");
             $scope.receipt.canDictate = true;
             $scope.$apply();

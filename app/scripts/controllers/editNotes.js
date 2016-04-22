@@ -1,13 +1,23 @@
 'use strict';
 
 angular.module('app')
-    .controller('EditNotesController', ['$scope', '$state', 'ReceiptApi', 'newReceiptDataService', 'notify', function ($scope, $state, ReceiptApi, newReceiptDataService, notify) {
+    .controller('EditNotesController', ['$scope', '$state', 'ReceiptApi', 'newReceiptDataService', 'notify', 'transcriptParser', function ($scope, $state, ReceiptApi, newReceiptDataService, notify, transcriptParser) {
 
         function initialise(){
             $scope.receipt = newReceiptDataService.getReceipt();
             $scope.showSpinner = false;
             $scope.receiptSubmitted = false;
             $scope.isTranscriptFocused = !$scope.receipt.canDictate;
+            $scope.parseTranscript();
+        }
+
+        $scope.parseTranscript = function(){
+            if ($scope.receipt.project === ''){
+                $scope.receipt.project = transcriptParser.parseProject($scope.receipt.transcript);
+            }
+            if ($scope.receipt.price === ''){
+                $scope.receipt.price = transcriptParser.parsePrice($scope.receipt.transcript);
+            }
         }
 
         $scope.submitReceipt = function(){
