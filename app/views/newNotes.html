@@ -2,10 +2,11 @@
     <div class="row"></div>
     <div class="row">
         <div class="input-field">
-            <button class="waves-effect waves-light btn col s12" ng-click="startDictation()">
+            <button class="waves-effect waves-light btn col s12" ng-click="toggleDictation()">
                 <i class="material-icons col s1">mic</i>
                 <div class="col s10">
-                    <span>Dictate Notes</span>
+                    <span ng-if="!recording">Start Dictating</span>
+                    <span ng-if="recording">Stop Dictating</span>
                 </div>
             </button>
         </div>

@@ -7,6 +7,7 @@ angular.module('app')
             $scope.receipt = newReceiptDataService.getReceipt();
             $scope.showSpinner = false;
             $scope.receiptSubmitted = false;
+            $scope.isTranscriptFocused = !$scope.receipt.canDictate;
         }
 
         $scope.submitReceipt = function(){
@@ -28,7 +29,7 @@ angular.module('app')
 
         $scope.navigateToNewReceipt = function(){
             $state.go('newReceipt');
-        }
+        };
 
         initialise();
     }]);

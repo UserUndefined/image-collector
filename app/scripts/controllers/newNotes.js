@@ -3,45 +3,73 @@
 angular.module('app')
     .controller('NewNotesController', ['$scope', '$state', 'transcriptParser', 'newReceiptDataService', function ($scope, $state, transcriptParser, newReceiptDataService) {
 
+        var recognition = undefined;
+
         function initialise(){
             $scope.receipt = newReceiptDataService.getReceipt();
+            $scope.recording = false;
+            defineRecorder();
         }
 
-        $scope.startDictation = function() {
+        $scope.toggleDictation = function(){
+            if ($scope.recording){
+                recognition.stop();
+            } else {
+                if (recognition){
+                    recognition.start();
+                } else {
+                    $scope.receipt.canDictate = false;
+                    $state.go('editNotes');
+                }
+            }
+        };
 
+        function defineRecorder(){
             if (window.hasOwnProperty('webkitSpeechRecognition')) {
-
-                var recognition = new webkitSpeechRecognition();
-
+                recognition = new webkitSpeechRecognition();
                 recognition.continuous = false;
                 recognition.interimResults = false;
-
-                recognition.lang = "en-US";
-                recognition.start();
+                recognition.lang = "en-GB";
 
                 recognition.onresult = function(e) {
-                    $scope.receipt.transcript = e.results[0][0].transcript;
-                    $scope.receipt.project = transcriptParser.parseProject(e.results[0][0].transcript);
-                    $scope.receipt.price = transcriptParser.parsePrice(e.results[0][0].transcript);
-                    $scope.receipt.date = moment().format("DD MMM YYYY");
-                    $scope.$apply();
-                    recognition.stop();
-                    $state.go('editNotes');
+                    var finalTranscript = "";
+                    for (var i = e.resultIndex; i < e.results.length; ++i) {
+                        if (e.results[i].isFinal) {
+                            finalTranscript += e.results[i][0].transcript;
+                        }
+                    }
+                    completeRecording(finalTranscript);
                 };
 
                 recognition.onerror = function(e) {
                     recognition.stop();
+                    $scope.recording = false;
+                    $scope.receipt.canDictate = false;
+                    $scope.$apply();
+                    $state.go('editNotes');
                 };
 
-                recognition.onstart = function(event){
-                    //console.log('Dictation started');
+                recognition.onstart = function(e){
+                    $scope.recording = true;
+                    $scope.$apply();
                 };
 
-                recognition.onend = function(){
-                    //console.log('Dictation ended');
+                recognition.onend = function(e){
+                    $scope.recording = false;
+                    $scope.$apply();
                 };
             }
-        };
+        }
+
+        function completeRecording(transcript){
+            $scope.receipt.transcript = transcript;
+            $scope.receipt.project = transcriptParser.parseProject(transcript);
+            $scope.receipt.price = transcriptParser.parsePrice(transcript);
+            $scope.receipt.date = moment().format("DD MMM YYYY");
+            $scope.receipt.canDictate = true;
+            $scope.$apply();
+            $state.go('editNotes');
+        }
 
         initialise();
     }]);

@@ -8,7 +8,8 @@ angular.module('app')
             transcript: '',
             project: '',
             price: '',
-            date: ''
+            date: '',
+            canDictate: true
         };
 
         function resetReceipt(){
@@ -17,6 +18,7 @@ angular.module('app')
             _receipt.project = '';
             _receipt.price = '';
             _receipt.date = '';
+            _receipt.canDictate = true;
         }
 
         return {
