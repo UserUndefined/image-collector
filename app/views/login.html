@@ -1,0 +1,38 @@
+<div class="container col s12 m6 l6 offset-m3 offset-l3">
+    <form class="login-form" name="loginForm">
+        <div class="row">
+            <div class="input-field">
+                <h5 class="center">Expenses Tracker Login</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="validate" id="logon_organisation" type="text" ng-model="user.organisation">
+                <label class="active" for="logon_organisation" data-error="wrong" data-success="right">Organisation</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input class="validate" id="logon_logon" type="text" ng-model="user.logon">
+                <label class="active" for="logon_logon" data-error="wrong" data-success="right">Logon</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="logon_password" type="password" ng-model="user.password">
+                <label class="active" for="logon_password">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m12 l12  login-text">
+                <input type="checkbox" id="remember-me" ng-model="user.rememberMe"/>
+                <label for="remember-me">Remember me</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <a class="btn waves-effect waves-light col s12" ng-click="submitLogon()">Login</a>
+            </div>
+        </div>
+    </form>
+</div>

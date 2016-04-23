@@ -1,11 +1,11 @@
-angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular', 'angularSpinner', 'cgNotify'])
+angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular', 'angularSpinner', 'cgNotify', 'ipCookie'])
 
     .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-        //$rootScope.$on('$stateChangeError', function () {
-        //    $state.transitionTo('login');
-        //});
+        $rootScope.$on('$stateChangeError', function () {
+            $state.transitionTo('login');
+        });
     }])
 
     .config(['$stateProvider', '$urlRouterProvider',
@@ -24,7 +24,20 @@ angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular', 'an
                 newReceiptView = {
                     url: '/new',
                     templateUrl: 'views/newReceipt.html',
-                    controller: 'NewReceiptController'
+                    controller: 'NewReceiptController',
+                    resolve: {
+                        authentication: ['userService', '$q', function (userService, $q) {
+                            var defer = $q.defer();
+                            userService.isLoggedIn().then(function (loggedIn) {
+                                if (loggedIn) {
+                                    defer.resolve(true);
+                                } else {
+                                    defer.reject();
+                                }
+                            });
+                            return defer.promise;
+                        }]
+                    }
                 },
                 newNotesView = {
                     url: '/new',
@@ -35,6 +48,11 @@ angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular', 'an
                     url: '/new',
                     templateUrl: 'views/editNotes.html',
                     controller: 'EditNotesController'
+                },
+                loginView = {
+                    url: '/login',
+                    templateUrl: 'views/login.html',
+                    controller: 'LoginController'
                 },
                 directivesExamplesView = {
                     url: '/directives',
@@ -54,6 +72,7 @@ angular.module('app', ['appTemplates', 'ui.router', 'config', 'restangular', 'an
             .state('newReceipt', newReceiptView)
             .state('newNotes', newNotesView)
             .state('editNotes', editNotesView)
+            .state('login', loginView)
             .state('directivesExamples', directivesExamplesView)
             .state('formValidationExample', formValidationExampleView);
 
