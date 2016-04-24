@@ -9,6 +9,8 @@ angular.module('app')
             project: '',
             price: '',
             date: '',
+            user: '',
+            organisation: '',
             canDictate: true
         };
 
@@ -18,6 +20,8 @@ angular.module('app')
             _receipt.project = '';
             _receipt.price = '';
             _receipt.date = '';
+            _receipt.user = '';
+            _receipt.organisation = '';
             _receipt.canDictate = true;
         }
 

@@ -28,6 +28,8 @@ angular.module('app')
             payload.date = $scope.receipt.date;
             payload.transcript = $scope.receipt.transcript;
             payload.file = $scope.receipt.file;
+            payload.user = $scope.receipt.user;
+            payload.organisation = $scope.receipt.organisation;
             ReceiptApi.all('receiver').post(payload).then(function(){
                 $scope.receiptSubmitted = true;
                 $scope.showSpinner = false;
